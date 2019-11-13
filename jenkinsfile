@@ -19,7 +19,7 @@ pipeline
     steps{
     script {
       
-        emailext mimeType: 'text/html',
+        emailtext mimeType: 'text/html',
                  subject: "[Jenkins]${currentBuild.fullDisplayName}",
                  to: "ritwikece5084@gmail.com",
                  body: '''<a href="http://13.233.151.1:8080/">click to approve</a>'''
