@@ -13,32 +13,28 @@ pipeline
               sh 'mvn clean install'
                  }
          }
-        /* stage('Approval') {
-         steps{
-        timeout(time:3, unit:'DAYS') {
-            input 'Do I have your approval for deployment?'
-        }
-        }
-    }*/
+       
     stage('Approval')
     {
     steps{
     script {
-      emailext mimeType: 'text/html',
-      subject: "[Jenkins]${currentBuild.fullDisplay.fullDisplayName}",
-      to : "ritwikghosh793@gmail.com",
-      body: '''<a href="http://13.233.151.1:8080/">click to approove</a>'''
-        def userInput= input id: 'userInput', 
-        message: 'Let\'s promote?',
-        submitterParameter: 'submitter',
-        submitter: 'Ritwik',
-        parameters: [
-        [$class: 'TextParameterDefinition', defaultValue: 'sit', description: 'Environment', name: 'env'],
-        [$class: 'TextParameterDefinition', defaultValue: 'k8s', description: 'Target', name: 'target']]
-         
-         echo("Env: "+userInput['env'])
-          echo("Target: "+userInput['target'])
-          echo("submitted by: "+userInput['submitter'])
+      
+        emailext mimeType: 'text/html',
+                 subject: "[Jenkins]${currentBuild.fullDisplayName}",
+                 to: "ritwikghosh793@gmail.com",
+                 body: '''<a href="http://13.233.151.1:8080/">click to approve</a>'''
+
+        def userInput = input id: 'userInput',
+                              message: 'Let\'s promote?', 
+                              submitterParameter: 'submitter',
+                              submitter: 'Ritwik',
+                              parameters: [
+                                [$class: 'TextParameterDefinition', defaultValue: 'sit', description: 'Environment', name: 'env'],
+                                [$class: 'TextParameterDefinition', defaultValue: 'k8s', description: 'Target', name: 'target']]
+
+        echo ("Env: "+userInput['env'])
+        echo ("Target: "+userInput['target'])
+        echo ("submitted by: "+userInput['submitter'])
          
         }
          }
