@@ -27,7 +27,7 @@ pipeline
       emailext mimeType: 'text/html',
       subject: "[Jenkins]${currentBuild.fullDisplay.fullDisplayName}",
       to : "ritwikghosh793@gmail.com",
-      body: '''<href="http://13.233.151.1:8080/">click to approove</a>'''
+      body: '''<a href="http://13.233.151.1:8080/">click to approove</a>'''
         def userInput= input id: 'userInput', 
         message: 'Let\'s promote?',
         submitterParameter: 'submitter',
