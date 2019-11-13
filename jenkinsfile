@@ -23,8 +23,24 @@ pipeline
     stage('Approval')
     {
     steps{
-    mail (to: 'kavitharamamoorthy97@gmail.com', subject: "TriggerJob15", body: "please go to the console o/p");
-        //def userInput= input(id: 'userInput', message: 'Job A failed, do u want to build jobB?' , ok:'Yes')
+    script {
+      emailext mimeType: 'text/html',
+      subject: "[Jenkins]${currentBuild.fullDisplay.fullDisplayName}",
+      to : "ritwikghosh793@gmail.com",
+      body: '''<href="http://13.233.151.1:8080/">click to approove</a>'''
+        def userInput= input id: 'userInput', 
+        message: 'Let\'s promote?',
+        submitterParameter: 'submitter',
+        submitte: 'Ritwik',
+        parameters: [
+        [$class: 'TextParameterDefinition', default value: 'sit', description: 'Environment', name: 'env'],
+         [$class: 'TextParameterDefinition', default value: 'k8s', description: 'Target', name: 'target']]
+         
+         echo("Env: "+userInput['env'])
+          echo("Target: "+userInput['target'])
+          echo("submitted by: "+userInput['submitter'])
+         
+        }
          }
          }
    
