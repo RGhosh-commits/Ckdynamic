@@ -31,7 +31,7 @@ pipeline
         def userInput= input id: 'userInput', 
         message: 'Let\'s promote?',
         submitterParameter: 'submitter',
-        submitte: 'Ritwik',
+        submitter: 'Ritwik',
         parameters: [
         [$class: 'TextParameterDefinition', defaultValue: 'sit', description: 'Environment', name: 'env'],
         [$class: 'TextParameterDefinition', defaultValue: 'k8s', description: 'Target', name: 'target']]
